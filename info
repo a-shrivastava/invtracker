@@ -1,0 +1,8 @@
+Your application 'invtracker' is now available.
+
+  URL:        http://invtracker-cgat.rhcloud.com/
+  SSH to:     56a192c50c1e664b400001d9@invtracker-cgat.rhcloud.com
+  Git remote: ssh://56a192c50c1e664b400001d9@invtracker-cgat.rhcloud.com/~/git/invtracker.git/
+  Cloned to:  /Users/abhishek/Desktop/our_application/workspace/invtracker
+
+Run 'rhc show-app invTracker' for more details about your app.
