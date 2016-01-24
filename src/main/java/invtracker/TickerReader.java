@@ -13,6 +13,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.joda.time.DateTime;
+
 public class TickerReader {
 	/**
 	 * 
@@ -21,8 +23,24 @@ public class TickerReader {
 	 */
 	public List<TickerData> read(String ticker) {
 		try {
+			//getting date for 200 days
+			DateTime todaysDate = new DateTime(System.currentTimeMillis());
+			int currentMonth = todaysDate.getMonthOfYear()-1;
+			String currentMonthString = (currentMonth<10)?"0"+currentMonth:""+currentMonth;
+			int currentDay = todaysDate.getDayOfMonth();
+			String currentDayString = (currentDay<10)?"0"+currentDay:""+currentDay;
+			int currentYear = todaysDate.getYear();
+			
+			DateTime hundredDaysBeforeDate = todaysDate.minusDays(200);
+			int hundredDaysBeforeMonth = hundredDaysBeforeDate.getMonthOfYear()-1;
+			String hundredDaysBeforeMonthString = (hundredDaysBeforeMonth<10)?"0"+hundredDaysBeforeMonth:""+hundredDaysBeforeMonth;
+			int hundredDaysBeforeDay = hundredDaysBeforeDate.getDayOfMonth();
+			String hundredDaysBeforeDayString = (hundredDaysBeforeDay<10)?"0"+hundredDaysBeforeDay:""+hundredDaysBeforeDay;
+			int hundredDaysBeforeYear = hundredDaysBeforeDate.getYear();
+			
+			
 			URL stockURL = new URL(
-					"http://real-chart.finance.yahoo.com/table.csv?s=GOOG&a=00&b=01&c=2016&d=00&e=24&f=2016&g=d&ignore=.csv");
+					"http://real-chart.finance.yahoo.com/table.csv?s="+ticker+"&a="+hundredDaysBeforeMonthString+"&b="+hundredDaysBeforeDayString+"&c="+hundredDaysBeforeYear+"&d="+currentMonthString+"&e="+currentDayString+"&f="+currentYear+"&g=d&ignore=.csv");
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					stockURL.openStream()));
 

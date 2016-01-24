@@ -21,7 +21,7 @@ public class TickerData {
 	@Override
 	public String toString() {
 		return "TickerData [date=" + date + ", closing_price=" + closing_price
-				+ "]";
+				+ "]\n";
 	}
-	
+									
 }

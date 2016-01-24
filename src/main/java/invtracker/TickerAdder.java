@@ -16,7 +16,10 @@ import javax.naming.*;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class TickerAdder extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
@@ -33,6 +36,15 @@ public class TickerAdder extends HttpServlet {
 			if (tickerDataList != null && !tickerDataList.isEmpty()) {
 				out.println(tickerDataList.toString());
 			}
+			//get 100 day max & min for each date
+			List<Float> test = new ArrayList<Float>();
+			test.add(2.22F);
+			test.add(1.22F);
+			test.add(0.22F);
+			test.add(3.22F);
+			test.add(5.22F);
+			
+			out.println(Collections.max(test));
 			
 
 			// adding ticker table
