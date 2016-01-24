@@ -11,7 +11,7 @@ import javax.naming.*;
 import java.io.PrintWriter;
 import java.sql.*;
 
-public class HelloWorld extends HttpServlet { 
+public class TickerAdder extends HttpServlet { 
   protected void doGet(HttpServletRequest request, 
       HttpServletResponse response) throws ServletException, IOException 
   {

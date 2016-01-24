@@ -6,12 +6,12 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          metadata-complete="false">
  <servlet>
-    <servlet-name>Hello</servlet-name>
-    <servlet-class>invtracker.HelloWorld</servlet-class>
+    <servlet-name>TickerAdder</servlet-name>
+    <servlet-class>invtracker.TickerAdder</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Hello</servlet-name>
-    <url-pattern>/HelloServlet</url-pattern>
+    <servlet-name>TickerAdder</servlet-name>
+    <url-pattern>/tickeradder</url-pattern>
   </servlet-mapping>
          
 </web-app>
