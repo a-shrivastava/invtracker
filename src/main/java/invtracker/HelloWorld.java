@@ -18,13 +18,25 @@ public class HelloWorld extends HttpServlet {
     // reading the user input
     String ticker= request.getParameter("ticker");    
     PrintWriter out = response.getWriter();
-    out.println(ticker);
+    out.println("I got ticker: "+ticker);
+    
+    //get data from URL
+//    URL stockURL = new URL("http://example.com/stock.csv");
+//    BufferedReader in = new BufferedReader(new InputStreamReader(stockUrl.openStream()));
+//    CSVReader reader = new CSVReader(in);
+    
+    
+    // adding ticker table
     Connection result = null;
     try {
         Context initialContext = new InitialContext();
         DataSource datasource = (DataSource)initialContext.lookup("java:jboss/datasources/MySQLDS");
         result = datasource.getConnection();
         Statement stmt = result.createStatement() ;
+        
+        
+        
+        
         String query = "select * from names;" ;
         ResultSet rs = stmt.executeQuery(query) ;
         while (rs.next()) {
@@ -33,5 +45,7 @@ public class HelloWorld extends HttpServlet {
     } catch (Exception ex) {
         out.println("Exception: " + ex + ex.getMessage());
     }
+    
+    //
   }  
 }
