@@ -208,11 +208,40 @@
 <body>
   <h1> Hellooo....:)</h1>
   		<form action="HelloServlet">			
-			 Please enter a color <br>
-			<input type="text" name="color"size="20px">
-			<input type="submit" value="submit">						
-		</form>	
+			<div class="container-fluid">
+		<h1>Investment Tracker</h1>
+		<div class="row">
+			<div class="col-sm-4">
+				<br>
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon3">
+					<input type="submit" value="submit" name="Add Ticker" id="btnval"></input></span>
+					<input type="text" class="form-control" name="ticker" id="tickerInput"
+						aria-describedby="basic-addon3">
+				</div>
+				<br /> <br />
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Ticker Symbol</th>
+							<th>Name</th>
+							<th>Actions (buy/sell/stay)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>GOOG</td>
+							<td>Google</td>
+							<td><a href="http://google.com">buy</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
+		</div>
+	</div>						
+		</form>	
+	
  <section class='container'>
           <hgroup>
             <h1>Welcome to your JBoss AS application on OpenShift</h1>
