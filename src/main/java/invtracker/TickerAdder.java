@@ -1,5 +1,7 @@
 package invtracker;
 
+import invtracker.dto.TickerData;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,6 +16,7 @@ import javax.naming.*;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.*;
+import java.util.List;
 
 public class TickerAdder extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
@@ -24,18 +27,13 @@ public class TickerAdder extends HttpServlet {
 		out.println("I got ticker: " + ticker);
 
 		try {
-			// get data from URL
-			URL stockURL = new URL(
-					"http://real-chart.finance.yahoo.com/table.csv?s=GOOG&a=00&b=01&c=2016&d=00&e=24&f=2016&g=d&ignore=.csv");
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					stockURL.openStream()));
-//			CSVReader reader = new CSVReader(in);
-
-			String nextLine;
-			while ((nextLine = in.readLine()) != null) {
-						out.println(nextLine + ", ");
+			// get data from URL and parse
+			TickerReader tickerReader = new TickerReader();
+			List<TickerData> tickerDataList = tickerReader.read(ticker);
+			if (tickerDataList != null && !tickerDataList.isEmpty()) {
+				out.println(tickerDataList.toString());
 			}
-
+			
 
 			// adding ticker table
 			Connection result = null;
