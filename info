@@ -6,3 +6,27 @@ Your application 'invtracker' is now available.
   Cloned to:  /Users/abhishek/Desktop/our_application/workspace/invtracker
 
 Run 'rhc show-app invTracker' for more details about your app.
+
+
+
+
+--------------------------------------
+MySQL 5.5 database added.  Please make note of these credentials:
+
+       Root User: admin5BNWmzE
+   Root Password: 3GthlfXqSepB
+   Database Name: invtracker
+
+Connection URL: mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/
+
+You can manage your new MySQL database by also embedding phpmyadmin.
+The phpmyadmin username and password will be the same as the MySQL credentials above.
+
+------------------------------------------
+PHPMYADMIN
+
+Please make note of these MySQL credentials again:
+  Root User: admin5BNWmzE
+  Root Password: 3GthlfXqSepB
+URL: https://invtracker-cgat.rhcloud.com/phpmyadmin/
+
