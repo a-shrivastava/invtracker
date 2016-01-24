@@ -7,7 +7,7 @@
          metadata-complete="false">
  <servlet>
     <servlet-name>Hello</servlet-name>
-    <servlet-class>invtracker/HelloWorld</servlet-class>
+    <servlet-class>invtracker.HelloWorld</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Hello</servlet-name>
