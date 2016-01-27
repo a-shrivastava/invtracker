@@ -4,10 +4,7 @@ import invtracker.dto.TickerData;
 import invtracker.impl.ProcessTicker;
 import invtracker.impl.TickerReader;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,12 +13,10 @@ import javax.sql.*;
 import javax.naming.*;
 
 import java.io.PrintWriter;
-import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
 
 public class TickerAdderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
