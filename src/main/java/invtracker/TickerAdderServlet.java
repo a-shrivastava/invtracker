@@ -23,7 +23,7 @@ public class TickerAdderServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// reading the user input
 		String ticker = request.getParameter("ticker");
-		int windowSize = Integer.parseInt(request.getParameter("windowSize"));
+		int windowSize = Integer.parseInt(request.getParameter("windowSize").toString());
 		PrintWriter out = response.getWriter();
 		out.println("I got ticker: " + ticker);
 		
