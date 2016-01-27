@@ -22,27 +22,32 @@ public class TickerAdderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// reading the user input
-		String ticker = request.getParameter("ticker");
-		int windowSize = Integer.parseInt(request.getParameter("windowSize").toString());
 		PrintWriter out = response.getWriter();
+
+		String ticker = request.getParameter("ticker");
+		out.println("I got ... " + request.getParameter("windowSize") + "...");
+		int windowSize = Integer.parseInt(request.getParameter("windowSize")
+				.toString());
 		out.println("I got ticker: " + ticker);
-		
 
 		try {
 			// get data from URL and parse
 			TickerReader tickerReader = new TickerReader();
-			List<TickerData> tickerDataList = tickerReader.read(ticker,windowSize);
+			List<TickerData> tickerDataList = tickerReader.read(ticker,
+					windowSize);
 			if (tickerDataList != null && !tickerDataList.isEmpty()) {
 				out.println(tickerDataList.toString());
 			}
-			//get 100 day max & min for each date
-			ProcessTicker processTicker = new ProcessTicker(tickerDataList, windowSize);
-			List<TickerData> tickerDataListWithMarkers = processTicker.process();
-			if (tickerDataListWithMarkers != null && !tickerDataListWithMarkers.isEmpty()) {
+			// get 100 day max & min for each date
+			ProcessTicker processTicker = new ProcessTicker(tickerDataList,
+					windowSize);
+			List<TickerData> tickerDataListWithMarkers = processTicker
+					.process();
+			if (tickerDataListWithMarkers != null
+					&& !tickerDataListWithMarkers.isEmpty()) {
 				out.println(tickerDataListWithMarkers.toString());
 			}
-			
-			
+
 			List<Float> test = new ArrayList<Float>();
 			test.add(2.22F);
 			test.add(1.22F);
@@ -51,7 +56,6 @@ public class TickerAdderServlet extends HttpServlet {
 			test.add(5.22F);
 			test.get(2);
 			out.println(Collections.max(test));
-			
 
 			// adding ticker table
 			Connection result = null;

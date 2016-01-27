@@ -232,45 +232,68 @@ pre {
 <body>
 	<section class='container'>
 
-		<form action="tickeradder">
-			<div class="container-fluid">
-				<h1>Investment Tracker</h1>
-				<div class="row">
-					<div class="col-sm-4">
-						<br>
-						<div class="input-group">
-							<span class="input-group-addon">Ticker Symbol</span> <input
-								type="text" class="form-control" name="ticker" id="tickerInput"
-								aria-describedby="basic-addon3">
+		<!-- 		<form action="tickeradder"> -->
+		<div class="container-fluid">
+			<h1>Investment Tracker</h1>
+			<div class="row">
+				<div class="col-sm-4">
+					<br>
+					<form role="form" action="tickeradder">
+						<div class="form-group">
+							<label for="ticker">Ticker Symbol:</label> <input type="text"
+								class="form-control" id="tickerInput">
 						</div>
-						<span class="input-group-addon">Window Size</span> <input
-							type="text" class="form-control" name="Window Size (days)"
-							id="windowSize" aria-describedby="basic-addon3"> <span
-							class="input-group-addon" id="basic-addon3"> <input
-							type="submit" value="Add New Ticker" name="Add New Ticker"
-							id="btnval"></input></span> <br /> <br />
-						<table class="table">
-							<thead>
-								<tr>
-									<th>Ticker Symbol</th>
-									<th>Name</th>
-									<th>Window Size</th>
-									<th>Actions (buy/sell/stay)</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>GOOG</td>
-									<td>Google</td>
-									<td>100</td>
-									<td><a href="http://google.com">buy</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+						<div class="form-group">
+							<label for="windowSize">Password:</label> <input type="number"
+								class="form-control" id="windowSize">
+						</div>
+						<button type="submit" class="btn btn-default">Add Ticker</button>
+					</form>
+					<!-- 						<form action="tickeradder"> -->
+					<!-- 							<div class="input-group"> -->
+					<!-- 								<span class="input-group-addon">Ticker Symbol</span>  -->
+					<!-- 								<input -->
+					<!-- 									type="text" name="ticker" id="tickerInput" -->
+					<!-- 									aria-describedby="basic-addon3"></input> -->
+					<!-- 							</div> -->
 
+					<!-- 							<div class="input-group"> -->
+					<!-- 								<span class="input-group-addon">Window Size days</span>  -->
+					<!-- 								<input -->
+					<!-- 									type="text" name="Window Size (days)" id="windowSize" -->
+					<!-- 									aria-describedby="basic-addon3"></input> -->
+					<!-- 							</div> -->
+
+					<!-- 							<div class="input-group"> -->
+					<!-- 								<input type="submit" value="Add New Ticker" -->
+					<!-- 									name="Add New Ticker" id="btnval"></input> -->
+					<!-- 									 <br /> <br /> -->
+					<!-- 							</div> -->
+					<!-- 						</form> -->
+
+
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Ticker Symbol</th>
+								<th>Name</th>
+								<th>Window Size</th>
+								<th>Actions (buy/sell/stay)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>GOOG</td>
+								<td>Google</td>
+								<td>100</td>
+								<td><a href="http://google.com">buy</a></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
+
 			</div>
+		</div>
 		</form>
 
 
