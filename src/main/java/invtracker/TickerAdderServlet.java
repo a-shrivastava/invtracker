@@ -38,16 +38,18 @@ public class TickerAdderServlet extends HttpServlet {
 			if (tickerDataList != null && !tickerDataList.isEmpty()) {
 				out.println(tickerDataList.toString());
 			}
-//			// get 100 day max & min for each date
-//			ProcessTicker processTicker = new ProcessTicker(tickerDataList,
-//					windowSize);
-//			List<TickerData> tickerDataListWithMarkers = processTicker
-//					.process();
-//			if (tickerDataListWithMarkers != null
-//					&& !tickerDataListWithMarkers.isEmpty()) {
-//				out.println(tickerDataListWithMarkers.toString());
-//			}
-//
+			out.println();
+			out.println("After Processing");
+			// get 100 day max & min for each date
+			ProcessTicker processTicker = new ProcessTicker(tickerDataList,
+					windowSize);
+			List<TickerData> tickerDataListWithMarkers = processTicker
+					.process();
+			if (tickerDataListWithMarkers != null
+					&& !tickerDataListWithMarkers.isEmpty()) {
+				out.println(tickerDataListWithMarkers.toString());
+			}
+
 //			List<Float> test = new ArrayList<Float>();
 //			test.add(2.22F);
 //			test.add(1.22F);

@@ -23,54 +23,59 @@ public class ProcessTicker {
 	 */
 	public List<TickerData> process() {
 		TickerData lastMinTickerData = null;
+		int lastMinTickerDataID = 0;
 		TickerData lastMaxTickerData = null;
+		int lastMaxTickerDataID = 0;
 
-		for (int i = windowSize + 1; i < tickerDataList.size(); i++) {
+		for (int i = windowSize-1; i < tickerDataList.size(); i++) {
 			TickerData currentTickerData = tickerDataList.get(i);
 			
 			// Computing for min in last 'windowSize' days 
 			TickerData minTickerData = null;
+			TickerData maxTickerData = null;
 			if (lastMinTickerData != null &&
 			// check if last min date was after (current date - 'windowSize' days)
-					lastMinTickerData.getDate().minusDays(windowSize)
-							.compareTo(currentTickerData.getDate()) < 0) {
+					(i-lastMinTickerDataID) < windowSize) {
 				if (currentTickerData.getClosingPrice() > lastMinTickerData
 						.getClosingPrice()) {
 					minTickerData = lastMinTickerData;
 				} else {
 					minTickerData = currentTickerData;
+					lastMinTickerData = currentTickerData;
+					lastMinTickerDataID = i;
 				}
 			} else {
 				List<TickerData> subsetListWindow = tickerDataList.subList(
-						i - windowSize, i);
+						i - windowSize + 1, i+1);
 				minTickerData = Collections.min(subsetListWindow,
 						new TickerDataComparator());
+				lastMinTickerData = minTickerData;
+				lastMinTickerDataID = tickerDataList.indexOf(minTickerData);
 			}
-			currentTickerData.setDaysSinceLastMin(Days.daysBetween(
-					currentTickerData.getDate(), minTickerData.getDate())
-					.getDays());
+			currentTickerData.setDaysSinceLastMin(i-lastMinTickerDataID);
 			
 			// Computing for max in last 'windowSize' days
-			TickerData maxTickerData = null;
-			if (lastMaxTickerData != null &&
-			// check if last max date was after (current date - 'windowSize' days)
-					lastMaxTickerData.getDate().minusDays(windowSize)
-							.compareTo(currentTickerData.getDate()) < 0) {
-				if (currentTickerData.getClosingPrice() < lastMaxTickerData
-						.getClosingPrice()) {
-					maxTickerData = lastMaxTickerData;
-				} else {
-					maxTickerData = currentTickerData;
-				}
-			} else {
-				List<TickerData> subsetListWindow = tickerDataList.subList(
-						i - windowSize, i);
-				maxTickerData = Collections.max(subsetListWindow,
-						new TickerDataComparator());
-			}
-			currentTickerData.setDaysSinceLastMax(Days.daysBetween(
-					currentTickerData.getDate(), maxTickerData.getDate())
-					.getDays());
+			if (lastMinTickerData != null &&
+					// check if last max date was after (current date - 'windowSize' days)
+							(i-lastMaxTickerDataID) < windowSize) {
+						if (currentTickerData.getClosingPrice() < lastMaxTickerData
+								.getClosingPrice()) {
+							maxTickerData = lastMaxTickerData;
+						} else {
+							maxTickerData = currentTickerData;
+							lastMaxTickerData = currentTickerData;
+							lastMaxTickerDataID = i;
+						}
+					} else {
+						List<TickerData> subsetListWindow = tickerDataList.subList(
+								i - windowSize + 1, i+1);
+						maxTickerData = Collections.max(subsetListWindow,
+								new TickerDataComparator());
+						lastMaxTickerData = maxTickerData;
+						lastMaxTickerDataID = tickerDataList.indexOf(maxTickerData);
+					}
+					currentTickerData.setDaysSinceLastMax(i-lastMaxTickerDataID);
+					
 
 			// compute red plot data point
 			currentTickerData.setRedPoint(100*(windowSize-currentTickerData.getDaysSinceLastMin())/windowSize);
