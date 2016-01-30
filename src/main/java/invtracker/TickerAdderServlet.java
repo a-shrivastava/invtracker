@@ -39,7 +39,7 @@ public class TickerAdderServlet extends HttpServlet {
 				out.println(tickerDataList.toString());
 			}
 			out.println();
-			out.println("After Processing");
+			out.println("\nAfter Processing");
 			// get 100 day max & min for each date
 			ProcessTicker processTicker = new ProcessTicker(tickerDataList,
 					windowSize);

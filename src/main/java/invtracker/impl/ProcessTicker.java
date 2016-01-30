@@ -56,7 +56,7 @@ public class ProcessTicker {
 			currentTickerData.setDaysSinceLastMin(i-lastMinTickerDataID);
 			
 			// Computing for max in last 'windowSize' days
-			if (lastMinTickerData != null &&
+			if (lastMaxTickerData != null &&
 					// check if last max date was after (current date - 'windowSize' days)
 							(i-lastMaxTickerDataID) < windowSize) {
 						if (currentTickerData.getClosingPrice() < lastMaxTickerData
