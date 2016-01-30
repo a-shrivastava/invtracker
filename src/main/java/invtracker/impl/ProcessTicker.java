@@ -28,6 +28,7 @@ public class ProcessTicker {
 		int lastMaxTickerDataID = 0;
 
 		for (int i = windowSize-1; i < tickerDataList.size(); i++) {
+			System.out.println("****on index:"+i);
 			TickerData currentTickerData = tickerDataList.get(i);
 			
 			// Computing for min in last 'windowSize' days 
