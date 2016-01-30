@@ -75,7 +75,7 @@ public class TickerAdderServlet extends HttpServlet {
 //						+ rs.getString(3) + "<br />");
 //			}
 		} catch (Exception ex) {
-			out.println("Exception: " + ex + ex.getStackTrace());
+			out.println(ex.getStackTrace());
 		}
 
 		//
