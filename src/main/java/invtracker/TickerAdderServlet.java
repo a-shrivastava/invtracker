@@ -65,7 +65,7 @@ public class TickerAdderServlet extends HttpServlet {
 //			out.println(Collections.max(test));
 //
 //			// adding ticker table
-			Connection result = null;
+			Connection result = null; 
 			// try {
 			Context initialContext = new InitialContext();
 			DataSource datasource = (DataSource) initialContext
