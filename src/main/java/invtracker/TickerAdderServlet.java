@@ -5,6 +5,8 @@ import invtracker.impl.ProcessTicker;
 import invtracker.impl.TickerReader;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -49,7 +51,10 @@ public class TickerAdderServlet extends HttpServlet {
 					&& !tickerDataListWithMarkers.isEmpty()) {
 				out.println(tickerDataListWithMarkers.toString());
 			}
-
+//			re
+//			String nextJSP = "/tickerGraphs.jsp";
+//			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+//			dispatcher.forward(request,response);
 //			List<Float> test = new ArrayList<Float>();
 //			test.add(2.22F);
 //			test.add(1.22F);
@@ -60,20 +65,20 @@ public class TickerAdderServlet extends HttpServlet {
 //			out.println(Collections.max(test));
 //
 //			// adding ticker table
-//			Connection result = null;
-//			// try {
-//			Context initialContext = new InitialContext();
-//			DataSource datasource = (DataSource) initialContext
-//					.lookup("java:jboss/datasources/MySQLDS");
-//			result = datasource.getConnection();
-//			Statement stmt = result.createStatement();
-//
-//			String query = "select * from names;";
-//			ResultSet rs = stmt.executeQuery(query);
-//			while (rs.next()) {
-//				out.println(rs.getString(1) + " " + rs.getString(2) + " "
-//						+ rs.getString(3) + "<br />");
-//			}
+			Connection result = null;
+			// try {
+			Context initialContext = new InitialContext();
+			DataSource datasource = (DataSource) initialContext
+					.lookup("java:jboss/datasources/MySQLDS");
+			result = datasource.getConnection();
+			Statement stmt = result.createStatement();
+
+			String query = "select * from names;";
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				out.println(rs.getString(1) + " " + rs.getString(2) + " "
+						+ rs.getString(3) + "<br />");
+			}
 		} catch (Exception ex) {
 			out.println(ex.getStackTrace());
 		}
