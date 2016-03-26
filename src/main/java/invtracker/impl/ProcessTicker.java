@@ -21,7 +21,7 @@ public class ProcessTicker {
 	 * @return 
 	 * 
 	 */
-	public List<TickerData> process() {
+	public List<TickerData> processFirstTime() {
 		TickerData lastMinTickerData = null;
 		int lastMinTickerDataID = 0;
 		TickerData lastMaxTickerData = null;
